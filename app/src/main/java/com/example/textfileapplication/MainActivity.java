@@ -2,6 +2,8 @@ package com.example.textfileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Context ctx = MainActivity.this.getApplicationContext();
+        //emulator unlock
+        try {
+            KeyguardManager mKeyGuardManager = (KeyguardManager)      ctx.getSystemService(Context.KEYGUARD_SERVICE);
+            KeyguardManager.KeyguardLock mLock = mKeyGuardManager.newKeyguardLock(MainActivity.class.getSimpleName());
+            mLock.disableKeyguard();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         final myFileHandler fileHandler = new myFileHandler();
         final EditText edtFileName = findViewById(R.id.edtFileName);
