@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
             KeyguardManager.KeyguardLock mLock = mKeyGuardManager.newKeyguardLock(MainActivity.class.getSimpleName());
             mLock.disableKeyguard();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+       //keeping screen awake
+        try{
+            PowerManager power = (PowerManager) ctx.getSystemService(Context.POWER_SERVICE);
+            power.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.ON_AFTER_RELEASE, MainActivity.class.getSimpleName()).acquire();
+        }catch (Exception e){
             e.printStackTrace();
         }
 
