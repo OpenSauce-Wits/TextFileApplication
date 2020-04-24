@@ -2,16 +2,45 @@ package com.example.textfileapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.app.KeyguardManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.os.PowerManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.lang.reflect.Method;
+
 public class MainActivity extends AppCompatActivity {
+    //custom function to disable animation
+    private void setSystemAnimationScale(float animationScale) {
+        try {
+            Class windowManagerStubClazz = Class.forName("android.view.IWindowManager$Stub");
+            Method asInterface = windowManagerStubClazz.getDeclaredMethod("asInterface", IBinder.class);
+            Class serviceManagerClazz = Class.forName("android.os.ServiceManager");
+            Method getService = serviceManagerClazz.getDeclaredMethod("getService", String.class);
+            Class windowManagerClazz = Class.forName("android.view.IWindowManager");
+            Method setAnimationScales = windowManagerClazz.getDeclaredMethod("setAnimationScales", float[].class);
+            Method getAnimationScales = windowManagerClazz.getDeclaredMethod("getAnimationScales");
+
+            IBinder windowManagerBinder = (IBinder) getService.invoke(null, "window");
+            Object windowManagerObj = asInterface.invoke(null, windowManagerBinder);
+            float[] currentScales = (float[]) getAnimationScales.invoke(windowManagerObj);
+            for (int i = 0; i < currentScales.length; i++) {
+                currentScales[i] = animationScale;
+            }
+            setAnimationScales.invoke(windowManagerObj, new Object[]{currentScales});
+            Log.d("CustomTestRunner", "Changed permissions of animations");
+        } catch (Exception e) {
+            Log.e("CustomTestRunner", "Could not change animation scale to " + animationScale + " :'(");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +63,17 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        //disabling animations
+        try{
+            int permStatus = ctx.checkCallingOrSelfPermission(Manifest.permission.SET_ANIMATION_SCALE);
+            if (permStatus == PackageManager.PERMISSION_GRANTED){
+                setSystemAnimationScale(1.0f);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         final myFileHandler fileHandler = new myFileHandler();
         final EditText edtFileName = findViewById(R.id.edtFileName);
@@ -119,4 +159,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 }
