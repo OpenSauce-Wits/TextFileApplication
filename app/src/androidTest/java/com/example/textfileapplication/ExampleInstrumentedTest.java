@@ -39,56 +39,7 @@ public class ExampleInstrumentedTest {
 
     String poemName="ToMySister";
     String poem = "To My Sister\n" +
-            "\n" +
-            "It is the first mild day of March:\n" +
-            "Each minute sweeter than before\n" +
-            "The redbreast sings from the tall larch\n" +
-            "That stands beside our door.\n" +
-            "\n" +
-            "There is a blessing in the air,\n" +
-            "Which seems a sense of joy to yield\n" +
-            "To the bare trees, and mountains bare,\n" +
-            "And grass in the green field.\n" +
-            "\n" +
-            "My sister! (’tis a wish of mine)\n" +
-            "Now that our morning meal is done,\n" +
-            "Make haste, your morning task resign;\n" +
-            "Come forth and feel the sun.\n" +
-            "\n" +
-            "Edward will come with you—and, pray,\n" +
-            "Put on with speed your woodland dress;\n" +
-            "And bring no book: for this one day\n" +
-            "We’ll give to idleness.\n" +
-            "\n" +
-            "No joyless forms shall regulate\n" +
-            "Our living calendar:\n" +
-            "We from to-day, my Friend, will date\n" +
-            "The opening of the year.\n" +
-            "\n" +
-            "Love, now a universal birth,\n" +
-            "From heart to heart is stealing,\n" +
-            "From earth to man, from man to earth:\n" +
-            "—It is the hour of feeling.\n" +
-            "\n" +
-            "One moment now may give us more\n" +
-            "Than years of toiling reason:\n" +
-            "Our minds shall drink at every pore\n" +
-            "The spirit of the season.\n" +
-            "\n" +
-            "Some silent laws our hearts will make,\n" +
-            "Which they shall long obey:\n" +
-            "We for the year to come may take\n" +
-            "Our temper from to-day.\n" +
-            "\n" +
-            "And from the blessed power that rolls\n" +
-            "About, below, above,\n" +
-            "We’ll frame the measure of our souls:\n" +
-            "They shall be tuned to love.\n" +
-            "\n" +
-            "Then come, my Sister! come, I pray,\n" +
-            "With speed put on your woodland dress;\n" +
-            "And bring no book: for this one day\n" +
-            "We’ll give to idleness.";
+            "\n" + "This is where the poem used to be";
     private String errEmptyFileName="Please input file name!",
     errSpecialCharacters="No special characters in file name!",
     fileDeleted="File Deleted!",
