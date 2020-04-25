@@ -155,8 +155,8 @@ public class ExampleInstrumentedTest {
         closeSoftKeyboard();
         fileContent.perform(typeText("poem"));
         closeSoftKeyboard();
-        Save.perform(click());
-        Delete.perform(click());
+        Save.perform(scrollTo()).perform(click());
+        Delete.perform(scrollTo()).perform(click());
         Display.check(matches(withText(fileDeleted)));
     }
 
