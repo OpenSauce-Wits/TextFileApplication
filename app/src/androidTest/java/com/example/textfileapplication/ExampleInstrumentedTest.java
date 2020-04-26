@@ -160,21 +160,21 @@ public class ExampleInstrumentedTest {
         Display.check(matches(withText(fileDeleted)));
     }
 
-    @Test
-    public void createAndDisplayFile(){
-        ViewInteraction Save = onView(withId(R.id.btnSave));
-        ViewInteraction Display = onView(withId(R.id.txtDisplay));
-        ViewInteraction Read = onView(withId(R.id.btnRead));
-        ViewInteraction fileName = onView(withId(R.id.edtFileName));
-        ViewInteraction fileContent = onView(withId(R.id.edtFileContent));
-        ViewInteraction Delete = onView(withId(R.id.btnDelete));
-        fileName.perform(typeText(poemName));
-        closeSoftKeyboard();
-        Delete.perform(click());
-        fileContent.perform(replaceText(poem));
-        closeSoftKeyboard();
-        Save.perform(scrollTo()).perform(click());
-        Display.perform(scrollTo()).check(matches(withText(poem)));
-    }
+//    @Test
+//    public void createAndDisplayFile(){
+//        ViewInteraction Save = onView(withId(R.id.btnSave));
+//        ViewInteraction Display = onView(withId(R.id.txtDisplay));
+//        ViewInteraction Read = onView(withId(R.id.btnRead));
+//        ViewInteraction fileName = onView(withId(R.id.edtFileName));
+//        ViewInteraction fileContent = onView(withId(R.id.edtFileContent));
+//        ViewInteraction Delete = onView(withId(R.id.btnDelete));
+//        fileName.perform(typeText(poemName));
+//        closeSoftKeyboard();
+//        Delete.perform(click());
+//        fileContent.perform(replaceText(poem));
+//        closeSoftKeyboard();
+//        Save.perform(scrollTo()).perform(click());
+//        Display.perform(scrollTo()).check(matches(withText(poem)));
+//    }
 
 }
