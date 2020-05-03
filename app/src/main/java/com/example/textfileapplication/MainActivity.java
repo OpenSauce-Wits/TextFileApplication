@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         try{
             int permStatus = ctx.checkCallingOrSelfPermission(Manifest.permission.SET_ANIMATION_SCALE);
             if (permStatus == PackageManager.PERMISSION_GRANTED){
-                setSystemAnimationScale(1.0f);
+                setSystemAnimationScale(0.0f);
             }
         }catch (Exception e){
             e.printStackTrace();
