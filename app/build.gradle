@@ -20,9 +20,14 @@ task jacocoTestReport( type: JacocoReport, dependsOn: [ 'testDebugUnitTest', 'cr
     def debugTree = fileTree ( dir: "$project.buildDir/intermediates/javac/debug", excludes: fileFilter)
     def mainSrc = "$project.projectDir/src/main/java"
 
-    sourceDirectories = files([ mainSrc])
-    classDirectories = files([ debugTree])
-    executionData = fileTree( dir: project.buildDir, includes: [ '**/*.exec', '**/**/**/**/*.ec'])
+    sourceDirectories.from = subprojects.sourceSets.main.allSource.srcDirs
+    additionalSourceDirs.from = subprojects.sourceSets.main.allSource.srcDirs
+    classDirectories.from = subprojects.sourceSets.main.output
+    executionData.from = subprojects.jacocoTestReport.executionData
+
+   // sourceDirectories = files([ mainSrc])
+    //classDirectories = files([ debugTree])
+    //executionData = fileTree( dir: project.buildDir, includes: [ '**/*.exec', '**/**/**/**/*.ec'])
 
     reports {
        xml.enabled = true
