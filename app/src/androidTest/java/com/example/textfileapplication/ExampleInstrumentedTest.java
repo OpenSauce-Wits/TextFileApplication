@@ -172,6 +172,19 @@ public class ExampleInstrumentedTest {
         Display.check(matches(withText(fileDeleted)));
     }
 
+    @Test
+    public void deleteFile2(){
+        ViewInteraction Display = onView(withId(R.id.txtDisplay));
+        ViewInteraction Delete = onView(withId(R.id.btnDelete));
+        ViewInteraction Save = onView(withId(R.id.btnSave));
+        ViewInteraction fileName = onView(withId(R.id.edtFileName));
+        fileName.perform(typeText(""));
+        Save.perform(click());
+        Delete.perform(click());
+        Display.check(matches(withText("Please input file name!")));
+
+    }
+
 //    @Test
 //    public void createAndDisplayFile(){
 //        ViewInteraction Save = onView(withId(R.id.btnSave));
