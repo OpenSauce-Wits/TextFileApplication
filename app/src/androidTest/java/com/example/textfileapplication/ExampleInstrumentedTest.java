@@ -195,6 +195,17 @@ public class ExampleInstrumentedTest {
         Display.check(matches(withText(errSpecialCharacters)));
     }
 
+    @Test
+    public void noSpecialCharacters3(){
+        ViewInteraction fileName = onView(withId(R.id.edtFileName));
+        ViewInteraction Display = onView(withId(R.id.txtDisplay));
+        ViewInteraction Save = onView(withId(R.id.btnSave));
+        fileName.perform(typeText("To My Sister"));
+        closeSoftKeyboard();
+        Save.perform(click());
+        Display.check(matches(withText(errSpecialCharacters)));
+    }
+
 //    @Test
 //    public void createAndDisplayFile(){
 //        ViewInteraction Save = onView(withId(R.id.btnSave));
