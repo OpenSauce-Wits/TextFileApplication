@@ -180,7 +180,7 @@ public class ExampleInstrumentedTest {
         fileName.perform(typeText(""));
         Save.perform(click());
         Delete.perform(click());
-        Display.check(matches(withText("Please input file name!")));
+        Display.check(matches(withText(errEmptyFileName)));
 
     }
 
@@ -205,22 +205,5 @@ public class ExampleInstrumentedTest {
         Save.perform(click());
         Display.check(matches(withText(errSpecialCharacters)));
     }
-
-//    @Test
-//    public void createAndDisplayFile(){
-//        ViewInteraction Save = onView(withId(R.id.btnSave));
-//        ViewInteraction Display = onView(withId(R.id.txtDisplay));
-//        ViewInteraction Read = onView(withId(R.id.btnRead));
-//        ViewInteraction fileName = onView(withId(R.id.edtFileName));
-//        ViewInteraction fileContent = onView(withId(R.id.edtFileContent));
-//        ViewInteraction Delete = onView(withId(R.id.btnDelete));
-//        fileName.perform(typeText(poemName));
-//        closeSoftKeyboard();
-//        Delete.perform(click());
-//        fileContent.perform(replaceText(poem));
-//        closeSoftKeyboard();
-//        Save.perform(scrollTo()).perform(click());
-//        Display.perform(scrollTo()).check(matches(withText(poem)));
-//    }
-
+    
 }

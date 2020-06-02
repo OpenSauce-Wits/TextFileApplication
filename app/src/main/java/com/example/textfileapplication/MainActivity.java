@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 if (myFileHandler.deleteFile(fileName)){
                     txtDisplay.setText("File Deleted!");
                 }
-                else txtDisplay.setText("Failed to delete file!");
+
             }
         });
 
