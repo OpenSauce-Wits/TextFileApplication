@@ -1,6 +1,7 @@
 package com.example.textfileapplication;
 
 import android.Manifest;
+import android.view.View;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -127,7 +128,6 @@ public class ExampleInstrumentedTest {
     @Test
     public void emptyFileName(){
         ViewInteraction Read = onView(withId(R.id.btnRead));
-        ViewInteraction fileName = onView(withId(R.id.edtFileName));
         ViewInteraction Display = onView(withId(R.id.txtDisplay));
         Read.perform(click());
         Display.check(matches(withText(errEmptyFileName)));
@@ -159,7 +159,6 @@ public class ExampleInstrumentedTest {
     public void deleteFile(){
         ViewInteraction Save = onView(withId(R.id.btnSave));
         ViewInteraction Display = onView(withId(R.id.txtDisplay));
-        ViewInteraction Read = onView(withId(R.id.btnRead));
         ViewInteraction fileName = onView(withId(R.id.edtFileName));
         ViewInteraction fileContent = onView(withId(R.id.edtFileContent));
         ViewInteraction Delete = onView(withId(R.id.btnDelete));
@@ -183,6 +182,17 @@ public class ExampleInstrumentedTest {
         Delete.perform(click());
         Display.check(matches(withText("Please input file name!")));
 
+    }
+
+    @Test
+    public void noSpecialCharacters2(){
+        ViewInteraction fileName = onView(withId(R.id.edtFileName));
+        ViewInteraction Display = onView(withId(R.id.txtDisplay));
+        ViewInteraction Delete = onView(withId(R.id.btnDelete));
+        fileName.perform(typeText("To My Sister"));
+        closeSoftKeyboard();
+        Delete.perform(click());
+        Display.check(matches(withText(errSpecialCharacters)));
     }
 
 //    @Test
