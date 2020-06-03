@@ -95,17 +95,17 @@ public class ExampleInstrumentedTest {
     fileDeleted="File Deleted!",
     errFileNotFound="File Does Not Exist!";
 
-    @Test
-    public void edtFileNameExists(){
-        ViewInteraction editText = onView(withId(R.id.edtFileName));
-        editText.check(matches(isDisplayed()));
-    }
+   // @Test
+  //  public void edtFileNameExists(){
+  //      ViewInteraction editText = onView(withId(R.id.edtFileName));
+   //     editText.check(matches(isDisplayed()));
+   // }
 
-    @Test
-    public void edtFileContentsExists(){
-        ViewInteraction editText = onView(withId(R.id.edtFileContent));
-        editText.check(matches(isDisplayed()));
-    }
+   // @Test
+  //  public void edtFileContentsExists(){
+    //    ViewInteraction editText = onView(withId(R.id.edtFileContent));
+    //    editText.check(matches(isDisplayed()));
+   // }
 
     @Test
     public void readButtonExists(){
