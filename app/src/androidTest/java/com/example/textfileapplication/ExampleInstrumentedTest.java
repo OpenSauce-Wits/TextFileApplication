@@ -126,7 +126,7 @@ public class ExampleInstrumentedTest {
         ViewInteraction Read = onView(withId(R.id.btnRead));
         ViewInteraction fileName = onView(withId(R.id.edtFileName));
         ViewInteraction Display = onView(withId(R.id.txtDisplay));
-        fileName.perform(typeText("To My Sister"));
+        fileName.perform(typeText("Zu Meine Schwester"));
         closeSoftKeyboard();
         Read.perform(click());
         Display.check(matches(withText(errSpecialCharacters)));
@@ -137,7 +137,7 @@ public class ExampleInstrumentedTest {
         ViewInteraction Read = onView(withId(R.id.btnRead));
         ViewInteraction fileName = onView(withId(R.id.edtFileName));
         ViewInteraction Display = onView(withId(R.id.txtDisplay));
-        fileName.perform(typeText("boom"));
+        fileName.perform(typeText("bust"));
         closeSoftKeyboard();
         Read.perform(click());
         Display.check(matches(withText(errFileNotFound)));
